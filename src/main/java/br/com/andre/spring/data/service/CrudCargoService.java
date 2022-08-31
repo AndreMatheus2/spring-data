@@ -8,16 +8,13 @@ import java.util.Scanner;
 
 @Service
 public class CrudCargoService {
-
     private final CargoRepository cargoRepository;
     private Boolean system = true;
-
     public CrudCargoService(CargoRepository cargoRepository) {
         this.cargoRepository = cargoRepository;
     }
 
     public void inicial(Scanner scanner) {
-
         while (system) {
             System.out.println("Qual ação você quer executar ?");
             System.out.println("0 - Sair");
@@ -43,14 +40,9 @@ public class CrudCargoService {
                 default:
                     system = false;
                     break;
-
-
             }
-
-
         }
     }
-
 
     public void salvar (Scanner scanner){
             System.out.println("Descrição do cargo:");
@@ -59,7 +51,6 @@ public class CrudCargoService {
             cargo.setDescricao(descricao);
             cargoRepository.save(cargo);
             System.out.println("Salvo");
-
         }
 
         public void atualizar(Scanner scanner){
@@ -72,11 +63,8 @@ public class CrudCargoService {
             cargo.setId(id);
             cargo.setDescricao(descricao);
             cargoRepository.save(cargo);
-
             System.out.println("Atualizado");
-
         }
-
 
     private void vizualizar() {
         Iterable<Cargo> cargos = cargoRepository.findAll();
@@ -84,14 +72,11 @@ public class CrudCargoService {
     }
 
     private void deletar(Scanner scanner) {
-
         System.out.println("ID");
         int id = scanner.nextInt();
         cargoRepository.deleteById(id);
         System.out.println("Deletado");
 
     }
-
-
 }
 
