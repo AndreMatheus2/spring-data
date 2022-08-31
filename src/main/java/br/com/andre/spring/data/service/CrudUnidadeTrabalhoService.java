@@ -4,6 +4,7 @@ import br.com.andre.spring.data.orm.UnidadeTrabalho;
 import br.com.andre.spring.data.repository.UnidadeTrabalhoRepository;
 import org.springframework.stereotype.Service;
 
+
 import java.util.Scanner;
 
 @Service
