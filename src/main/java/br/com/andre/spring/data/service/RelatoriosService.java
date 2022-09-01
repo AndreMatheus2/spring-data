@@ -1,6 +1,7 @@
 package br.com.andre.spring.data.service;
 
 import br.com.andre.spring.data.orm.Funcionario;
+import br.com.andre.spring.data.orm.FuncionarioProjecao;
 import br.com.andre.spring.data.repository.FuncionarioRepository;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,7 @@ private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/y
             System.out.println("0 - Sair");
             System.out.println("1 - Busca Funcionaro nome");
             System.out.println("2 - Busca Funcionaro nome, data, salario maior");
+            System.out.println("3 - Pesquisa Funcionario, SALARIO");
 
 
             int action = scanner.nextInt();
@@ -37,6 +39,9 @@ private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/y
                     break;
                     case 2:
                         buscaFuncionarioNomeSalarioMaiorData(scanner);
+                    break;
+                    case 3:
+                        pesquisaFuncionarioSalario();
                     break;
                 default:
                     system = false;
@@ -67,4 +72,8 @@ private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/y
         list.forEach(System.out::println);
     }
 
+    private void pesquisaFuncionarioSalario(){
+        List<FuncionarioProjecao> list = funcionarioRepository.findFuncionarioSalario();
+        list.forEach(f -> System.out.println("Funcionario: | ID: " + f.getId() + " | NOME: " + f.getNome() + " | SALARIO: " + f.getSalario()));
+    }
 }
